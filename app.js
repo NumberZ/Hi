@@ -46,15 +46,15 @@ io.on('connection',function(socket){
         socket.username = data.username;
         usersList.push(data.username);
         userServer[data.username] = socket;
-        io.emit('addCount',usersList);
+        io.emit('online',usersList);
     });
     // console.log(socket.request.headers.cookie);
     // console.log(socket.id);
     socket.on('disconnect',function(){
-        console.log('disconnect');
         _.remove(usersList,function(n){
             return  n === socket.username;
-        })
+        });
+        io.emit('offline',usersList);
     });
 });
 
