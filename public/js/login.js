@@ -1,5 +1,5 @@
 (function($){
-    var loginBtn = $("#loginBtn");
+    var loginBtn = $("#loginBtn"),login = $('.login');
     var nickname = $("#nickname");
     var labelError = $("#labelError");
     nickname.focus(function(){
@@ -18,7 +18,10 @@
                 nickname.removeClass('valid');
                 nickname.addClass('invalid');
             }else{
-                window.sayHi.init();
+                login.fadeOut();
+                $('.container').fadeIn();
+                $('#panelNickname').html(nickVal);
+                window.sayHi.init(nickVal);
             }
         });
     })
