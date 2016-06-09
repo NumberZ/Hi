@@ -2,26 +2,31 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title></title>
+        <title>Say Hi</title>
     </head>
+    <link rel="stylesheet" href="/css/materialize.min.css">
     <link rel="stylesheet" href="/css/style.css">
     <body>
-        <ul id="messages"></ul>
-        <form action="">
-          <input id="m" autocomplete="off" /><button>Send</button>
-        </form>
+        <div class="login card-panel">
+          <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="nickname" type="text" class="validate"/>
+                  <label id="labelError">Nickname</label>
+                </div>
+                <div class="col s12 login-btn-wrapper">
+                    <a id="loginBtn" class="waves-effect waves-light btn">登录</a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
         <script src="js/socket.io.js"></script>
         <script src="js/jquery-1.11.0.min.js"></script>
-        <script>
-            var socket = io();
-            $('form').submit(function(){
-              socket.emit('chat message', $('#m').val());
-              $('#m').val('');
-              return false;
-            });
-            socket.on('chat message', function(msg){
-                $('#messages').append($('<li>').text(msg));
-            });
-        </script>
+        <script src="js/materialize.min.js"></script>
+        <script src="js/sayHi.js"></script>
+        <script src="js/login.js"></script>
     </body>
 </html>
