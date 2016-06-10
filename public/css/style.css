@@ -14,9 +14,10 @@
 body{
 
 }
-/*.login {
-    display: none;
-}*/
+nav{
+    background: #212121;
+}
+
 .collection{
     border:none;
 }
@@ -29,4 +30,37 @@ body{
     display: block;
     font-size: 20px;
     padding: 10px 10px 0px 5px;
+}
+.p-title{
+    height: 50px;
+    color:#fff;
+    line-height: 50px;
+    background: #607d8b;
+    font-size: 25px;
+    font-weight: 100;
+}
+.p-msg{
+    height: 400px;
+    padding: 10px;
+    border-bottom:1px solid rgba(160,160,160,0.2);
+    overflow: scroll;
+}
+.p-chip{
+    display: inline-block;
+    height: 32px;
+    font-size: 13px;
+    font-weight:500;
+    color:rgba(0,0,0,0.6);
+    line-height: 32px;
+    padding:0 12px;
+    border-radius:3px;
+    background-color:#e4e4e4;
+    margin-top: 6px;
+}
+.p-chip-username{
+    font-size: 16px;
+    font-weight: bold;
+}
+.p-control{
+    padding: 10px;
 }

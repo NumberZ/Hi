@@ -48,6 +48,10 @@ io.on('connection',function(socket){
         userServer[data.username] = socket;
         io.emit('online',usersList);
     });
+
+    socket.on('publicMsg',function(o){
+        io.emit('pMsg',o);
+    });
     // console.log(socket.request.headers.cookie);
     // console.log(socket.id);
     socket.on('disconnect',function(){
