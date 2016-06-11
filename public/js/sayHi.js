@@ -36,6 +36,7 @@
                 oldFriends = newFriends;
                 arr.forEach(function(item,index,array){
                     $("li[data-name=" + item + "]").remove();
+                    Materialize.toast(item + '退出聊天室',1000);
                 });
             }
         },
