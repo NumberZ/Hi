@@ -154,7 +154,7 @@
             var file  = document.getElementById(username + "File").files[0],reader = new FileReader();
             reader.onload = function(e){
                 var b = $("#to" + username + 'MsgContainer');
-                b.append('<div><span class="p-chip-username">Me</span> : <img src="' + e.target.result + '"/></div>')
+                b.append('<div class="t-r"><span class="p-chip-username">Me</span> : <img src="' + e.target.result + '"/></div>')
                 b.scrollTop(b[0].scrollHeight);
                 sayHi.submitImgPrivate(e.target.result,sayHi.username,username);
             };
@@ -185,7 +185,12 @@
 
     //处理公屏图片
     function handlePublicImg(res){
-        pMsgContainer.append('<div><span class="p-chip-username">' + res.from + '</span> : <img src="' + res.img + '"/></div>');
+        if(res.from === sayHi.username){
+            pMsgContainer.append('<div class="t-r"><span class="p-chip-username">' + res.from + '</span> : <img src="' + res.img + '"/></div>');
+        }else {
+            pMsgContainer.append('<div><span class="p-chip-username">' + res.from + '</span> : <img src="' + res.img + '"/></div>');
+        }
+
     }
     //处理私聊图片
     function handlePrivateImg(res){
