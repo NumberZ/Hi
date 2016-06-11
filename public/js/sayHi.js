@@ -42,6 +42,9 @@
         init:function(username){
             this.socket = io.connect('http://localhost:5000');
             this.username = username;
+            this.socket.on('connect',function(){
+                Materialize.toast('登录成功！',1000);
+            });
             this.socket.emit('newUser',{username:username});
             this.socket.on('online', function(res){
                 sayHi.updataOnlineFriends('online',res,username);
@@ -55,17 +58,20 @@
             this.socket.on('messagePrivate',function(res){
                 handlePrivateMsg(res);
             });
+            this.socket.on('disconnect',function(){
+                Materialize.toast('你已经掉线了');
+            });
         }
     }
 
     function createTab(username,msg){
         tabs.push(username);
-        $("#chatTabs").append('<li class="tab col"><a href="#to' + username + '">To ' + username + '</a></li>');
+        $("#chatTabs").append('<li class="tab col"><a href="#to' + username + '"id="trigger' + username + '">To ' + username + '<i class="material-icons close-icon" id="close' + username +'">clear</i></a></li>');
         $("#tabsContainer").append(' <div id="to' + username + '" class="col s12 dis-no">'
-                                +       '<div class="card-panel" style="padding:0px">'
+                                +       '<div class="card-panel">'
                                 +           '<div class="p-msg" id="to' + username +'MsgContainer"></div>'
                                 +           '<div class="p-control">'
-                                +               '<div class="row" style="margin-bottom:0px;">'
+                                +               '<div class="row">'
                                 +                   '<div class="input-field col s9">'
                                 +                       '<i class="material-icons prefix">chat_bubble_outline</i>'
                                 +                       '<input id="to' + username + 'Msg" type="text" />'
@@ -81,16 +87,46 @@
         if(msg){
             $("#to" + username + 'MsgContainer').append('<div><div class="p-chip"><span class="p-chip-username">' + username+ '</span> : ' + msg + '</span></div>');
         }
+        var msgInput = $("#to" + username + "Msg");
+        var sendPrivateMsg = function(){
+            var msg = msgInput.val();
+            $("#to" + username + 'MsgContainer').append('<div class="t-r"><div class="p-chip"><span class="p-chip-username">Me</span> : ' + msg + '</span></div>');
+            msgInput.val('');
+            sayHi.submitPrivateMsg(msg,username);
+        }
         $("#to" + username + "Btn").on('click',function(){
-                var msg = $("#to" + username + "Msg").val();
-                $("#to" + username + 'MsgContainer').append('<div class="t-r"><div class="p-chip"><span class="p-chip-username">Me</span> : ' + msg + '</span></div>');
-                sayHi.submitPrivateMsg(msg,username);
+            sendPrivateMsg();
         });
+        msgInput.keydown(function(event){
+            if(event.keyCode === 13){
+                sendPrivateMsg();
+            }
+        });
+        $("#close" + username).on('click',function(){
+            $("#trigger" + username).parent('li').remove();
+            $("#to" + username).remove();
+            $("#triggerchatroom").trigger('click');
+            _.remove(tabs,function(n){
+                return (n === username);
+            });
+        })
     }
     function handlePrivateMsg(res){
         if(tabs.indexOf(res.from) === -1){
             createTab(res.from,res.msg);
+            var o = $("#trigger" + res.from);
+            o.addClass('twinkle');
+            o.on('click',function() {
+                $(this).removeClass('twinkle');
+            });
         }else{
+            var a = $("#trigger" + res.from);
+            if(!a.hasClass('active')){
+                a.addClass('twinkle');
+            }
+            a.on('click',function(){
+                $(this).removeClass('twinkle');
+            });
             $("#to" + res.from + 'MsgContainer').append('<div><div class="p-chip"><span class="p-chip-username">' + res.from + '</span> : ' + res.msg + '</span></div>');
         }
     }
@@ -120,9 +156,11 @@
         //创建tab
         if(tabs.indexOf(username) === -1){
             createTab(username,null);
+            $("#trigger" + username).trigger('click');
         }else {
             return ;
         }
 
     });
+
 })(jQuery);

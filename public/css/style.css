@@ -4,6 +4,9 @@ body{
 nav{
     background: #212121;
 }
+.container{
+    display: none;
+}
 .t-r{
     text-align:right;
 }
@@ -24,7 +27,34 @@ nav{
     margin-top: 40px;
 }
 
+.tabs{
+    background: #607d8b;
 
+}
+
+.tabs .tab a{
+        color:#fff;
+}
+.tabs .tab a.active{
+    background: #00897B;
+}
+.tabs .tab a:hover{
+    color:#fff;
+}
+.container .row{
+    margin-top: 0.5rem;
+}
+#chatroom .card-panel{
+    margin-top: 0px;
+}
+
+#tabsContainer .card-panel{
+    margin-top: 0px;
+    padding: 0px;
+}
+.indicator{
+    display: none;
+}
 .collection{
     border:none;
 }
@@ -75,5 +105,31 @@ nav{
 }
 .p-control{
     border-top: 1px solid rgba(160,160,160,0.2);
-    padding: 10px;
+    padding: 10px 20px 5px 20px;
 }
+.p-control .row{
+    margin-bottom: 15px;
+}
+.p-control .row .col.s3{
+    text-align: center;
+}
+.tabs .tab{
+    text-transform:none;
+}
+.close-icon{
+    position: absolute;
+    top:6px;
+    right:6px;
+}
+@-webkit-keyframes twinkling{    /*透明度由0到1*/
+   0%{
+      opacity:0; /*透明度为0*/
+    }
+   100%{
+      opacity:1; /*透明度为1*/
+   }
+ }
+
+ .twinkle{
+      -webkit-animation: twinkling 1s infinite ease-in-out;
+ }
