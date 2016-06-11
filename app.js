@@ -46,11 +46,17 @@ io.on('connection',function(socket){
         socket.username = data.username;
         usersList.push(data.username);
         userServer[data.username] = socket;
+        console.log(usersList);
         io.emit('online',usersList);
     });
 
     socket.on('publicMsg',function(o){
         io.emit('pMsg',o);
+    });
+
+    socket.on('privateMsg',function(o){
+        var to = o.to;
+        userServer[to].emit('messagePrivate',o);
     });
     // console.log(socket.request.headers.cookie);
     // console.log(socket.id);

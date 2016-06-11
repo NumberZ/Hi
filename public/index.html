@@ -40,6 +40,10 @@
                         <div class="card-panel-content" >
                             <span id="panelNickname"></span>
                         </div>
+                        <div class="card-panel-chat">
+                            <span>Chat Room</span>
+                            <div href="" class="secondary-content"><i class="material-icons">people</i></div>
+                        </div>
                     </div>
                     <div class="card-panel">
                         <div class="card-panel-title">
@@ -53,32 +57,32 @@
                     </div>
                 </div>
                 <div class="col s9">
-                    <div class="card-panel" style="padding:0px">
-                        <div class="p-title center-align">
-                            <span>Chat Room</span>
-                        </div>
-                        <div class="p-msg" id="pMsgContainer">
+                    <div class="row" id="tabsContainer">
+                        <div class="col s12">
+                            <ul class="tabs" id="chatTabs">
+                              <li class="tab col"><a href="#chatroom">Chat Room</a></li>
 
+                            </ul>
                         </div>
-                        <div class="p-control">
-                            <div class="row" style="margin-bottom:0px;">
-                              <div class="col s12">
-                                <div class="row" style="margin-bottom:0px;">
-                                  <div class="input-field col s9">
-                                    <i class="material-icons prefix">chat_bubble_outline</i>
-                                    <input id="pMsg" type="text">
-                                  </div>
-                                  <div class="input-field col s3">
-                                    <a id="pMsgBtn" class="btn waves-effect waves-teal">Send</a>
-                                  </div>
+                        <div id="chatroom" class="col s12">
+                            <div class="card-panel" style="padding:0px">
+                                <div class="p-msg" id="pMsgContainer"></div>
+                                <div class="p-control">
+                                    <div class="row" style="margin-bottom:0px;">
+                                        <div class="input-field col s9">
+                                            <i class="material-icons prefix">chat_bubble_outline</i>
+                                            <input id="pMsg" type="text">
+                                        </div>
+                                        <div class="input-field col s3">
+                                            <a class="btn waves-effect waves-teal" id="pMsgBtn">Send</a>
+                                        </div>
+                                    </div>
                                 </div>
-                             </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
         <script src="js/socket.io.js"></script>
         <script src="js/jquery-1.11.0.min.js"></script>

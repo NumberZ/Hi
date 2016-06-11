@@ -1,3 +1,15 @@
+body{
+
+}
+nav{
+    background: #212121;
+}
+.t-r{
+    text-align:right;
+}
+.dis-no{
+    display: none;
+}
 .login{
     position: absolute;
     width: 500px;
@@ -11,25 +23,20 @@
     text-align: center;
     margin-top: 40px;
 }
-body{
 
-}
-nav{
-    background: #212121;
-}
 
 .collection{
     border:none;
 }
 .card-panel-title{
-    font-weight: 300;
     padding: 5px;
     border-bottom:1px solid rgba(160,160,160,0.2);
 }
 #panelNickname{
     display: block;
+    font-weight: 300;
     font-size: 20px;
-    padding: 10px 10px 0px 5px;
+    padding: 10px 10px 10px 10px;
 }
 .p-title{
     height: 50px;
@@ -39,11 +46,16 @@ nav{
     font-size: 25px;
     font-weight: 100;
 }
+
+.card-panel-chat{
+    border-top: 1px solid rgba(160,160,160,0.2);
+    padding: 10px;
+}
 .p-msg{
     height: 400px;
     padding: 10px;
-    border-bottom:1px solid rgba(160,160,160,0.2);
-    overflow: scroll;
+    border-bottom:
+    overflow: auto;
 }
 .p-chip{
     display: inline-block;
@@ -62,5 +74,6 @@ nav{
     font-weight: bold;
 }
 .p-control{
+    border-top: 1px solid rgba(160,160,160,0.2);
     padding: 10px;
 }
