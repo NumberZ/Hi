@@ -54,9 +54,19 @@ io.on('connection',function(socket){
         io.emit('pMsg',o);
     });
 
+
+    socket.on('publicImg',function(o){
+        io.emit('pImg',o);
+    })
+
     socket.on('privateMsg',function(o){
         var to = o.to;
         userServer[to].emit('messagePrivate',o);
+    });
+
+    socket.on('privateImg',function(o){
+        var to = o.to;
+        userServer[to].emit('imgPrivate',o);
     });
     // console.log(socket.request.headers.cookie);
     // console.log(socket.id);
@@ -72,4 +82,5 @@ io.on('connection',function(socket){
 
 http.listen(app.get('port'),function(){
     console.log('your webapp is running in port:' + app.get('port'));
+
 });

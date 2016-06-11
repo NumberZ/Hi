@@ -2,10 +2,10 @@ body{
     background: #e0e0e0;
 }
 nav{
-    background: #212121;
+    background: #263238;
     font-family: 'Tangerine', serif;
-      font-size: 48px;
-      text-shadow: 4px 4px 4px #aaa;
+    font-size: 48px;
+    text-shadow: 4px 4px 4px #aaa;
 }
 
 .tabs .tab a{
@@ -35,7 +35,7 @@ nav{
 }
 
 .tabs{
-    background: #607d8b;
+    background: #263238;
 
 }
 
@@ -43,7 +43,7 @@ nav{
         color:#fff;
 }
 .tabs .tab a.active{
-    background: #00897B;
+    background: #26a69a;
 }
 .tabs .tab a:hover{
     color:#fff;
@@ -58,6 +58,9 @@ nav{
 #tabsContainer .card-panel{
     margin-top: 0px;
     padding: 0px;
+}
+#tabsContainer .card-panel img{
+    max-width: 99%;
 }
 .indicator{
     display: none;
@@ -91,7 +94,6 @@ nav{
 .p-msg{
     height: 400px;
     padding: 10px;
-    border-bottom:
     overflow: auto;
 }
 .p-chip{
@@ -110,9 +112,33 @@ nav{
     font-size: 16px;
     font-weight: bold;
 }
+.feature{
+    background:#fff;
+    color: #26a69a;
+    border-top: 1px solid rgba(160,160,160,0.2);
+    position:relative;
+    padding: 0px 20px 0px 20px;
+    overflow: hidden;
+}
+.feature span{
+    float: left;
+}
+.feature input{
+    position: absolute;
+    left: 10px;
+    opacity: 0;
+}
+.feature i{
+    border: 0;
+    float: left;
+}
+.feature .send-file{
+    float: right;
+    margin-right:20px;
+}
 .p-control{
     border-top: 1px solid rgba(160,160,160,0.2);
-    padding: 10px 20px 5px 20px;
+    padding: 0px 20px 5px 20px;
 }
 .p-control .row{
     margin-bottom: 15px;
@@ -120,6 +146,7 @@ nav{
 .p-control .row .col.s3{
     text-align: center;
 }
+
 .tabs .tab{
     text-transform:none;
 }
