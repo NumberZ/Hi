@@ -14,7 +14,7 @@ var usersList = [];
 var userServer = {};
 
 //设置端口号
-app.set('port',process.env.PORT || 5000);
+app.set('port',process.env.PORT || 80);
 
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
