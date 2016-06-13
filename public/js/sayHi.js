@@ -55,7 +55,7 @@
             }
         },
         init:function(username){
-            this.socket = io.connect('http://localhost:80');
+            this.socket = io.connect('http://115.28.68.65:80');
             this.username = username;
             this.socket.on('connect',function(){
                 Materialize.toast('登录成功！',1000);
